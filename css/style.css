@@ -1,0 +1,140 @@
+@font-face {
+    font-family: 'BebasNeue';
+    src:url('../font/bebasneue.woff') format('woff')
+}
+
+body {
+    font:18px/36px 'BebasNeue', 'Arial Narrow', arial, san-serif;
+    background-color: #ddd;
+}
+
+img#gambarKecil {
+    width: 120px;
+    height: 120px;
+}
+
+h1 {
+    font-size: 80px;
+    margin:50px 0;
+    text-align: center;
+    text-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+.container {
+    width:600px;
+    background-color: white;
+    margin:auto;
+    padding:30px;
+    box-shadow: 0 0 6px 3px rgba(0,0,0,.5);
+    border-radius: 5px;
+}
+
+.gallery li {
+    width:120px;
+    height: 120px;
+    border-radius: 50%;
+    border:5px solid #666;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    margin-right:20px;
+}
+
+.gallery li img {
+    border-radius: 20px;
+}
+
+.gallery li span {
+    display:block;
+    width:120px;
+    height: 120px;
+    background-color: rgba(200,200,200,.5);
+    position:absolute;
+    border-radius:50% ;
+    top:0;
+    text-align: center;
+    line-height: 120px;
+    color: #333;
+    text-shadow: 1px 1px 1px #ddd;
+    opacity:0;
+    transition: .3s;
+}
+
+.gallery li a:hover span{
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+
+.clear {
+    clear: both;
+}
+
+.overlay {
+    width:0;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: rgba(0,0,0,0);
+    z-index: 9999;
+    text-align: center;
+    padding: 20px;
+}
+
+.overlay:target {
+    width:auto;
+    height: auto;
+    bottom:0;
+    right:0;
+    background-color: rgba(0,0,0,0.8);
+    transition: .3s;
+}
+
+.overlay:target img {
+    animation: zoomDanFade 1s;
+}
+
+.overlay img {
+    max-height: 100%;
+    box-shadow: 2px 2px 7px rgba(0,0,0,.75);
+}
+
+.overlay .close {
+    position: absolute;
+    top:20px;
+    left:950px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border:solid white;
+    padding: 2px;
+    box-shadow: 2px 2px 7px rgba(0,0,0,.75);
+    opacity: 0;
+}
+
+.overlay:target .close {
+    animation: slideDownFade .5s .5s forwards;
+}
+
+@keyframes zoomDanFade {
+    0% {
+        transform:scale(0);
+        opacity:0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        margin-top:-20px;
+    }
+    100% {
+        opacity: 1;
+        margin-top:20px ;
+    }
+}
